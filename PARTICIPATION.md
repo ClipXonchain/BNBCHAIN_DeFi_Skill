@@ -1,5 +1,7 @@
 # Hackathon participation — Purrfect Claw Web3 Skills
 
+**This project’s GitHub repo:** [github.com/ClipXonchain/BNBCHAIN_DeFi_Skill](https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill)
+
 This file is a practical checklist for [Purrfect Claw Web3 Skills (DoraHacks bounty #1338)](https://dorahacks.io/hackathon/bounty/1338) and the [Pieverse Skill Store](https://www.pieverse.io/skill-store).
 
 ---
@@ -27,14 +29,14 @@ git add .
 git commit -m "Initial: ClipX BNB Chain Intelligence & DeFi skill for Pieverse"
 ```
 
-Create an empty repo on GitHub (no README if you already have one locally), then:
+If you have not connected a remote yet, create an empty repo on GitHub, then:
 
 ```bash
-git remote add origin https://github.com/<your-username>/<your-repo>.git
+git remote add origin https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill.git
 git push -u origin main
 ```
 
-**After push, save the repo URL** — you will paste it into DoraHacks BUIDL and bounty application.
+**Official repo for this submission:** `https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill` — use that URL in DoraHacks BUIDL and bounty application.
 
 ---
 
@@ -54,7 +56,7 @@ OpenClaw skill combining BNB Chain analytics (ClipX API) with on-chain DeFi via 
 This submission is a Purrfect Claw / OpenClaw skill (`SKILL.md`) plus a thin Python client (`api_client_cli.py`). The intelligence layer pulls real-time BNB Chain metrics and rankings (TVL, fees, meme tokens, DEX volume, market insight, announcements, etc.) from the ClipX API. The action layer uses the native `purr` CLI so the agent can check wallet balance and execute swaps, Four.meme buys, Lista deposits, and transfers — without handling private keys. Smart workflows chain “analyze then act” in one chat flow. Source and docs: see GitHub README and SKILL.md.
 
 **Repository**  
-Your public GitHub URL (root should be this skill folder or README must point to `ClipX_DeFi_Skill` paths clearly).
+`https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill` (this folder is the repo root).
 
 **Demo**  
 After you receive the **trial instance**, add: short screen recording or link showing (1) menu 1–18, (2) an intelligence result, (3) wallet info via `purr`, (4) optional: a confirmed small swap or balance check only.

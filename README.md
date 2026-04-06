@@ -6,6 +6,13 @@
 [![Purrfect Claw](https://img.shields.io/badge/Purrfect%20Claw-Skill-purple.svg)](https://www.pieverse.io/purrfect-claw)
 [![BNB Chain](https://img.shields.io/badge/BNB%20Chain-BSC-yellow.svg)](https://bnbchain.org)
 [![Pieverse Skill Store](https://img.shields.io/badge/Pieverse-Skill%20Store-green.svg)](https://www.pieverse.io/skill-store)
+[![GitHub](https://img.shields.io/badge/source-ClipXonchain%2FBNBCHAIN__DeFi__Skill-181717?logo=github)](https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill)
+
+---
+
+## Repository
+
+Public source: **[github.com/ClipXonchain/BNBCHAIN_DeFi_Skill](https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill)**
 
 ---
 
