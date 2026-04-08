@@ -188,6 +188,78 @@ The `purr` CLI reads its config from environment variables injected by the Purrf
 
 ---
 
+## purr CLI reference (Pieverse documentation)
+
+This section matches the public **Pieverse** command reference. For authoritative updates, use:
+
+- [Command reference — all `purr` commands](https://docs.pieverse.io/cli/commands)
+- [Introduction — what `purr` does](https://docs.pieverse.io/docs/getting-started)
+- [Core concepts — TEE wallet, instances, credentials](https://docs.pieverse.io/getting-started/core-concepts)
+- [Purrfect Claw hosted runtime](https://docs.pieverse.io/cli/hosted-runtime) (wallet injected automatically)
+- [External OpenClaw — install & configure `purr`](https://docs.pieverse.io/cli/external-runtime)
+
+**Command pattern** (from docs):
+
+```bash
+purr <command> [args]
+```
+
+### Wallet
+
+| Action | Command (from docs) |
+|--------|----------------------|
+| Get address | `purr wallet address --chain-type ethereum` — returns JSON with your wallet address |
+| Balance | `purr wallet balance` — native or token balance |
+| Transfer | `purr wallet transfer --to <address> --amount <amount> --token <symbol>` |
+| Sign text | `purr wallet sign --message "authenticate:user123"` |
+| Sign EIP-712 | `purr wallet sign-typed-data --data <json>` |
+
+### Swaps & routing
+
+| Action | Command (from docs) |
+|--------|----------------------|
+| PancakeSwap (BNB Chain) | `purr pancake swap --execute` |
+| Bitget (multi-chain EVM) | `purr bitget swap --execute` |
+| DFlow (Solana) | `purr dflow swap --execute` |
+
+### Lista DAO
+
+| Action | Command (from docs) |
+|--------|----------------------|
+| List vaults | `purr lista list-vaults` |
+| Deposit | `purr lista deposit --execute` |
+
+### Four.meme
+
+| Action | Command (from docs) |
+|--------|----------------------|
+| Buy tokens | `purr fourmeme buy --execute` |
+
+### Batch transactions
+
+| Action | Command (from docs) |
+|--------|----------------------|
+| Execute steps file | `purr execute --file <steps.json>` |
+
+### Configure `purr` (external / non-hosted)
+
+From [CLI commands — purr config](https://docs.pieverse.io/cli/commands):
+
+```bash
+purr config set api-url "https://purr.pieverse.io"
+purr config set api-token "<token>"
+purr config set instance-id "<id>"
+purr config list
+```
+
+Environment variables **override** config file values: `WALLET_API_URL`, `WALLET_API_TOKEN`, `INSTANCE_ID`. See [Core concepts — credentials file](https://docs.pieverse.io/getting-started/core-concepts).
+
+### How this skill uses these commands
+
+[SKILL.md](SKILL.md) maps menu options **13–18** to the flows above. In production the **agent** runs the same `purr` invocations; **you** confirm amounts, recipients, and swaps before any `transfer` or `--execute` runs. For extra flags or interactive prompts, use `purr --help` on your instance and recheck the [official command reference](https://docs.pieverse.io/cli/commands).
+
+---
+
 ## Publishing to Pieverse Skill Store
 
 ### Publish via ClawHub
