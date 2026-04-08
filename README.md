@@ -8,6 +8,8 @@
 [![Pieverse Skill Store](https://img.shields.io/badge/Pieverse-Skill%20Store-green.svg)](https://www.pieverse.io/skill-store)
 [![GitHub](https://img.shields.io/badge/source-ClipXonchain%2FBNBCHAIN__DeFi__Skill-181717?logo=github)](https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill)
 
+On GitHub use branch **`main`**: **[README on repo](https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill/blob/main/README.md)** · **[raw README (search “purr CLI”)](https://raw.githubusercontent.com/ClipXonchain/BNBCHAIN_DeFi_Skill/main/README.md)**. Swap, transfer, Lista, Four.meme: [purr CLI reference](#purr-cli-reference-pieverse-documentation).
+
 ---
 
 ## Overview
@@ -116,56 +118,6 @@ purr wallet address --chain-type ethereum
 
 ---
 
-## File Structure
-
-| File | Purpose |
-|------|---------|
-| `SKILL.md` | Skill definition: menu, intelligence commands, DeFi action flows, smart workflows |
-| `api_client_cli.py` | Thin HTTP client for ClipX BNB Chain API (analytics only) |
-| `requirements.txt` | Python dependencies (`requests` only) |
-| `README.md` | This file |
-
----
-
-## Demo Guide
-
-### Demo 1 — Intelligence to Action
-
-1. Say: "Show me the top meme tokens"
-2. Agent runs meme rank analytics and displays the table
-3. Say: "Buy the #1 token with 0.01 BNB on Four.meme"
-4. Agent shows confirmation (token, amount, platform)
-5. Confirm with "yes"
-6. Agent executes `purr fourmeme buy` and returns the transaction result
-
-### Demo 2 — DeFi Deposit
-
-1. Say: "Check my wallet balance"
-2. Agent shows TEE wallet address and BNB balance
-3. Say: "Show me Lista vaults"
-4. Agent lists available vaults
-5. Say: "Deposit 0.1 BNB into vault X"
-6. Agent confirms and executes via `purr lista deposit`
-
-### Demo 3 — Market Insight + Trade
-
-1. Say: "Show market insight live"
-2. Agent displays volume leaders, top gainers, top losers
-3. Say: "Swap 0.05 BNB for CAKE on PancakeSwap"
-4. Agent confirms and executes via `purr pancake swap`
-
----
-
-## Configuration
-
-| Variable | Description |
-|----------|-------------|
-| `CLIPX_API_BASE` | ClipX API base URL. Default: `https://skill.clipx.app` |
-
-The `purr` CLI reads its config from environment variables injected by the Purrfect Claw platform (`WALLET_API_URL`, `WALLET_API_TOKEN`, `INSTANCE_ID`).
-
----
-
 ## purr CLI reference (Pieverse documentation)
 
 This section matches the public **Pieverse** command reference. For authoritative updates, use:
@@ -235,6 +187,56 @@ Environment variables **override** config file values: `WALLET_API_URL`, `WALLET
 ### How this skill uses these commands
 
 [SKILL.md](SKILL.md) maps menu options **13–18** to the flows above. In production the **agent** runs the same `purr` invocations; **you** confirm amounts, recipients, and swaps before any `transfer` or `--execute` runs. For extra flags or interactive prompts, use `purr --help` on your instance and recheck the [official command reference](https://docs.pieverse.io/cli/commands).
+
+---
+
+## File Structure
+
+| File | Purpose |
+|------|---------|
+| `SKILL.md` | Skill definition: menu, intelligence commands, DeFi action flows, smart workflows |
+| `api_client_cli.py` | Thin HTTP client for ClipX BNB Chain API (analytics only) |
+| `requirements.txt` | Python dependencies (`requests` only) |
+| `README.md` | This file |
+
+---
+
+## Demo Guide
+
+### Demo 1 — Intelligence to Action
+
+1. Say: "Show me the top meme tokens"
+2. Agent runs meme rank analytics and displays the table
+3. Say: "Buy the #1 token with 0.01 BNB on Four.meme"
+4. Agent shows confirmation (token, amount, platform)
+5. Confirm with "yes"
+6. Agent executes `purr fourmeme buy` and returns the transaction result
+
+### Demo 2 — DeFi Deposit
+
+1. Say: "Check my wallet balance"
+2. Agent shows TEE wallet address and BNB balance
+3. Say: "Show me Lista vaults"
+4. Agent lists available vaults
+5. Say: "Deposit 0.1 BNB into vault X"
+6. Agent confirms and executes via `purr lista deposit`
+
+### Demo 3 — Market Insight + Trade
+
+1. Say: "Show market insight live"
+2. Agent displays volume leaders, top gainers, top losers
+3. Say: "Swap 0.05 BNB for CAKE on PancakeSwap"
+4. Agent confirms and executes via `purr pancake swap`
+
+---
+
+## Configuration
+
+| Variable | Description |
+|----------|-------------|
+| `CLIPX_API_BASE` | ClipX API base URL. Default: `https://skill.clipx.app` |
+
+The `purr` CLI reads its config from environment variables injected by the Purrfect Claw platform (`WALLET_API_URL`, `WALLET_API_TOKEN`, `INSTANCE_ID`). Command tables: [purr CLI reference](#purr-cli-reference-pieverse-documentation) (above).
 
 ---
 
