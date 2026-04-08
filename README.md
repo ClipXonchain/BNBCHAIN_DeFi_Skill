@@ -10,28 +10,6 @@
 
 ---
 
-## Repository
-
-Public source: **[github.com/ClipXonchain/BNBCHAIN_DeFi_Skill](https://github.com/ClipXonchain/BNBCHAIN_DeFi_Skill)**
-
----
-
-## Hackathon participation
-
-**Bounty:** [Purrfect Claw Web3 Skills — DoraHacks #1338](https://dorahacks.io/hackathon/bounty/1338)
-
-Use **[PARTICIPATION.md](PARTICIPATION.md)** for the full checklist: GitHub push, BUIDL copy-paste text, Skill Store publish, trial instance demo, and a short demo script.
-
-**Quick checklist**
-
-- [ ] Public GitHub repo with this folder (`git` commands in PARTICIPATION.md)
-- [ ] DoraHacks: submit BUIDL and link it to the bounty
-- [ ] Purrfect Claw trial instance: verify `purr wallet address` / `balance`
-- [ ] Publish skill to Pieverse Skill Store (ClawHub / merchant flow)
-- [ ] Record live demo (intelligence + TEE wallet on instance)
-
----
-
 ## Overview
 
 **ClipX BNB DeFi** is a Purrfect Claw skill that combines **real-time BNB Chain analytics** with **on-chain DeFi actions** — all secured by the TEE wallet.
@@ -293,15 +271,13 @@ clawhub publish . \
 
 ## Hackathon submission (Four.Meme AI Sprint)
 
-Track each deliverable in **[PARTICIPATION.md](PARTICIPATION.md)**.
-
 **Bounty:** [Purrfect Claw Web3 Skills](https://dorahacks.io/hackathon/bounty/1338)
 
 **Required deliverables:**
 - Web3 skill published to Pieverse Skill Store
 - Uses Purrfect Claw’s native TEE wallet for on-chain operations (`purr` in SKILL.md)
 - Live demo on the provided Purrfect Claw trial instance
-- GitHub repo with documentation (this README + SKILL.md + PARTICIPATION.md)
+- GitHub repo with documentation (this README + SKILL.md)
 
 **What makes this skill unique:**
 - Only skill that combines **12 real-time analytics data sources** with **6 on-chain DeFi actions**
