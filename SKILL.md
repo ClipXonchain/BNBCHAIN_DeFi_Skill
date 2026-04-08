@@ -20,6 +20,7 @@ metadata: { "openclaw": { "emoji": "🟡", "requires": { "bins": ["python", "pur
 - **Never** invent, guess, or template a wallet address (e.g. do not use `0x000…0` unless `purr` actually printed it). **Never** invent balances or transaction hashes.
 - Use the **actual stdout (and stderr on failure)** from each `purr` invocation. Summarize only in addition to quoting key facts from real output (address, balance, tx hash).
 - If `purr` is missing or returns an error, **say so** and paste the error — do not fabricate success.
+- **Option 13 only:** The hex `0x0000000000000000000000000000000000000000` is the null address. A healthy TEE `purr` wallet on BNB Chain is a normal `0x…` address. If you did **not** just receive that null string from `purr wallet address` stdout, **never** show it as the user’s wallet — that is a telltale hallucination. Absurd balances (e.g. tens of thousands of BNB) without raw `purr wallet balance` output are also invalid.
 
 ---
 
@@ -164,13 +165,24 @@ Use **`purr --help`** or subcommand help on the instance if the CLI prompts for 
 
 ### Option 13 — Wallet Info
 
-Show the user's wallet address and balance.
+Show the user's TEE wallet address and balance **from `purr` only** — same runtime as options 14–18 (if buys show a real `0x…` address elsewhere, option 13 **must** reproduce that address via step 1 below, not from chat memory or a custom card).
 
 **Steps:**
 
 1. Run: `purr wallet address --chain-type ethereum`
 2. Run: `purr wallet balance`
-3. Present the address and balance to the user in a clear summary derived **only** from those two commands’ output (see Rule 5).
+
+**Mandatory reply shape (stops wrong `0x000…` / fake balances):**
+
+1. Put the **full verbatim stdout** from step 1 in a **fenced code block** (label it e.g. `purr wallet address`).
+2. Put the **full verbatim stdout** from step 2 in a **second fenced code block** (`purr wallet balance`).
+3. **One short line** restating address + balance — every digit must appear in those two blocks (copy-paste substrings only).
+
+**Forbidden for option 13:**
+
+- Hand-typing lines like `Address: …` / `Balance: …` or a “🧾 WALLET INFO (TEE)” card **unless** those values are literally copied from the two stdout blocks above.
+- Filling in address or balance from an earlier message without re-running both commands in this turn.
+- Proceeding with a summary if either command did not run or failed — instead show stderr / explain the host cannot run `purr`.
 
 ### Option 14 — Swap on PancakeSwap
 
