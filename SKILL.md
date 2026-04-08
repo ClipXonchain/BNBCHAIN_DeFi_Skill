@@ -8,7 +8,7 @@ metadata: { "openclaw": { "emoji": "🟡", "requires": { "bins": ["python", "pur
 
 **Rule 1 — Menu format:** Always use numbered lines (1. 2. 3. …). See "Interactive menu" section.
 
-**Rule 2 — Table format:** Always wrap analytics table output inside a markdown code block (triple backticks). Start with a line containing only three backticks, then the table lines, then a line containing only three backticks. This is required so the table displays in monospace with aligned columns. The API returns tables formatted at **40 chars per line** (mobile-friendly); do not reformat or truncate — pass through exactly. **Exception:** For option 11 (Binance Announcements), do NOT wrap in code block — pass through the API output as-is (plain markdown with **📢 Binance Announcements** header, 🔸 bullets, and blank line after each item).
+**Rule 2 — Table format:** Always wrap analytics table output inside a markdown code block (triple backticks). Start with a line containing only three backticks, then the table lines, then a line containing only three backticks. This is required so the table displays in monospace with aligned columns. Most API tables are **~40 chars per line** (mobile-friendly); **option 7 (Meme Rank)** may be **~62 chars/line** (MCAP and B.HOLDERS). Do not reformat or truncate — pass through exactly. **Exception:** For option 11 (Binance Announcements), do NOT wrap in code block — pass through the API output as-is (plain markdown with **📢 Binance Announcements** header, 🔸 bullets, and blank line after each item).
 
 **Rule 3 — Confirmation before on-chain actions.** For ANY on-chain operation (options 14–18), you MUST show the user exactly what will happen (token, amount, recipient, action) and ask for explicit confirmation BEFORE running the `purr` command. Never execute a transaction without the user saying "yes" or "confirm".
 
@@ -91,7 +91,7 @@ The client prints a pre-formatted table. Your job:
 
 1. Run the command.
 2. Take the stdout output (the formatted table).
-3. **For options 1–10, 12:** Put it inside a markdown code block (three backticks on a line before, three backticks on a line after). Tables are formatted at **40 chars per line** (mobile-friendly); pass through exactly — do not reformat, truncate, or widen.
+3. **For options 1–10, 12:** Put it inside a markdown code block (three backticks on a line before, three backticks on a line after). Most tables are **~40 chars per line**; **option 7** is **~62 chars/line** (MCAP, B.HOLDERS). Pass through exactly — do not reformat, truncate, or drop columns.
 4. **For option 11 (Binance Announcements):** Output the stdout as-is. Do NOT wrap in code block. Pass through exactly.
 5. Send it. Done. Your response is complete.
 
@@ -131,6 +131,10 @@ Display rules: Run the command, take the stdout output, and output it exactly as
 ### DEX Volume — option 12
 
 Top 10 DEXs on BNB Chain by trading volume. Supports intervals: 24h (default), 7d, 30d. Data from DefiLlama.
+
+### Meme Rank — option 7
+
+The API may return a **wider table** with **MCAP** and **B.HOLDERS** (~62 chars/line). Pass through stdout **exactly** in a code block — do not summarize into a shorter 4-column table.
 
 ---
 
