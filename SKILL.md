@@ -14,6 +14,13 @@ metadata: { "openclaw": { "emoji": "🟡", "requires": { "bins": ["python", "pur
 
 **Rule 4 — Response ends with the output.** After the table, wallet info, or transaction result, your message is complete. Write nothing else.
 
+**Rule 5 — `purr` must be real, never invented (options 13–18).**
+- For wallet and on-chain actions you MUST run the **`purr` shell commands** listed in Section B exactly as written (same flags and order where multiple steps are given).
+- **Never** use `api_client_cli.py`, Python, or ClipX API for options 13–18.
+- **Never** invent, guess, or template a wallet address (e.g. do not use `0x000…0` unless `purr` actually printed it). **Never** invent balances or transaction hashes.
+- Use the **actual stdout (and stderr on failure)** from each `purr` invocation. Summarize only in addition to quoting key facts from real output (address, balance, tx hash).
+- If `purr` is missing or returns an error, **say so** and paste the error — do not fabricate success.
+
 ---
 
 ## What this skill does
@@ -140,7 +147,20 @@ The API may return a **wider table** with **MCAP** and **B.HOLDERS** (~62 chars/
 
 ## SECTION B — DeFi action commands (13–18)
 
-These commands use the `purr` CLI for on-chain operations via the TEE wallet.
+These commands use the `purr` CLI for on-chain operations via the TEE wallet. Official reference: [Pieverse `purr` commands](https://docs.pieverse.io/cli/commands).
+
+### Quick reference — map number to `purr` commands
+
+| # | Menu label | After user confirmation (where required) | `purr` commands to run |
+|---|------------|------------------------------------------|-------------------------|
+| 13 | Wallet Info | (no tx — read only) | 1) `purr wallet address --chain-type ethereum` 2) `purr wallet balance` |
+| 14 | PancakeSwap | User said yes to swap summary | `purr pancake swap --execute` |
+| 15 | Four.meme | User said yes | `purr fourmeme buy --execute` |
+| 16 | Lista | List: no deposit yet. Deposit: user said yes | List: `purr lista list-vaults`. Deposit: `purr lista deposit --execute` |
+| 17 | Transfer | User said yes | `purr wallet transfer --to <address> --amount <amount> --token <token>` |
+| 18 | Bitget | User said yes | `purr bitget swap --execute` |
+
+Use **`purr --help`** or subcommand help on the instance if the CLI prompts for extra flags (pair, slippage, etc.); the base commands above are the Pieverse-documented entry points.
 
 ### Option 13 — Wallet Info
 
@@ -150,7 +170,7 @@ Show the user's wallet address and balance.
 
 1. Run: `purr wallet address --chain-type ethereum`
 2. Run: `purr wallet balance`
-3. Present the address and balance to the user in a clear summary.
+3. Present the address and balance to the user in a clear summary derived **only** from those two commands’ output (see Rule 5).
 
 ### Option 14 — Swap on PancakeSwap
 
@@ -270,6 +290,18 @@ For any other natural-language request that combines analytics with an on-chain 
 
 ---
 
+## Additional `purr` commands (not on menu 1–18)
+
+If the user explicitly asks to **sign** or **run a steps file**, use the official commands (still follow confirmation and Rule 5):
+
+- Message sign: `purr wallet sign --message "<text>"`
+- EIP-712: `purr wallet sign-typed-data --data '<json>'` (valid JSON per user / dApp)
+- Batch steps: `purr execute --file <path-to-steps.json>`
+
+Solana swaps via DFlow (`purr dflow swap --execute`) are documented on Pieverse but **not** part of this skill’s numbered menu; only use if the user clearly asks for Solana/DFlow.
+
+---
+
 ## Other intelligence modes
 
 - `--mode metrics_block --blocks 100` — average block time and gas over recent blocks.
@@ -279,6 +311,6 @@ For any other natural-language request that combines analytics with an on-chain 
 
 ## Environment
 
-The API base URL defaults to `https://skill.clipx.app`. Override with `CLIPX_API_BASE` env var.
+**ClipX API (intelligence, options 1–12, plus metrics):** defaults to `https://skill.clipx.app`. Override with `CLIPX_API_BASE`.
 
-The `purr` CLI is pre-configured on Purrfect Claw instances. No wallet setup needed — the TEE wallet is injected automatically.
+**`purr` (options 13–18):** On [Purrfect Claw hosted runtime](https://docs.pieverse.io/cli/hosted-runtime), `WALLET_API_URL`, `WALLET_API_TOKEN`, and `INSTANCE_ID` are injected — no manual `purr config`. On [external OpenClaw](https://docs.pieverse.io/cli/external-runtime), set `purr config` or the same env vars per [Core concepts](https://docs.pieverse.io/getting-started/core-concepts).
